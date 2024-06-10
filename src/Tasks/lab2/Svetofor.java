@@ -1,64 +1,54 @@
 package Tasks.lab2;
 
-
 public class Svetofor {
-    public enum Color {
-        RED,
-        YELLOW,
-        GREEN
-    }
-
-    private Color color;
+    private String color;
     private int duration;
 
-    public Svetofor(Color initialColor, int duration) {
-        this.color = initialColor;
+    public Svetofor(String color, int duration) {
+        this.color = color;
         this.duration = duration;
     }
 
-    public void changeColor() {
-        switch (color) {
-            case RED:
-                color = Color.GREEN;
-                break;
-            case YELLOW:
-                color = Color.RED;
-                break;
-            case GREEN:
-                color = Color.YELLOW;
-                break;
-        }
-    }
-
-    public boolean isRed() {
-        return color == Color.RED;
-    }
-
-    public boolean isGreen() {
-        return color == Color.GREEN;
-    }
-
-    public Color getColor() {
+    public String getColor() {
         return color;
     }
 
-    public void setDuration(int duration) {
-        this.duration = duration;
+    public void setColor(String color) {
+        this.color = color;
     }
 
     public int getDuration() {
         return duration;
     }
 
+    public void setDuration(int duration) {
+        this.duration = duration;
+    }
+
+    public boolean isRed() {
+        return color.equals("Red");
+    }
+
+    public boolean isGreen() {
+        return color.equals("Green");
+    }
+
     public static void main(String[] args) {
-        Svetofor trafficLight = new Svetofor(Color.RED, 10);
-        System.out.println("Initial color: " + trafficLight.getColor());
+        Svetofor svetofor = new Svetofor("Red", 60);
 
-        trafficLight.changeColor();
-        System.out.println("New color: " + trafficLight.getColor());
+        System.out.println("Начальный цвет: " + svetofor.getColor());
+        System.out.println("Продолжительность: " + svetofor.getDuration());
 
-        System.out.println("Is it red? " + trafficLight.isRed());
-        System.out.println("Is it green? " + trafficLight.isGreen());
+        svetofor.setColor("Red");
+        svetofor.setDuration(45);
+
+        System.out.println("Текущий цвет: " + svetofor.getColor());
+        if (svetofor.isRed()) {
+            System.out.println("Текущий цвет - красный");
+        } else if (svetofor.isGreen()) {
+            System.out.println("Текущий цвет - зеленый");
+        } else {
+            System.out.println("Текущий цвет - другой");
+        }
     }
 }
-

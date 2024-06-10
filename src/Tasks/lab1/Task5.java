@@ -1,32 +1,35 @@
 package Tasks.lab1;
 
+import java.util.*;
+
 public class Task5 {
     public static void main(String[] args) {
-        String[] transactions = {
+        List<String> transactions = Arrays.asList(
                 "Пополнение через банкомат ~ +1000",
                 "Оплата интернета ~ -500",
                 "Кафе ~ -300",
                 "Зарплата ~ +15000",
                 "Штраф за парковку ~ -2500",
                 "Подарок ~ +2000"
-        };
+        );
 
-        int result = 0;
+        int balance = calculateBalance(transactions);
+        System.out.println("Итоговая сумма на счету составляет " + balance + ".");
+    }
 
+    public static int calculateBalance(List<String> transactions) {
+        int balance = 0;
         for (String transaction : transactions) {
-
             String[] parts = transaction.split(" ~ ");
-            String description = parts[0];
+            String amountString = parts[1].trim();
             int amount = Integer.parseInt(parts[1]);
 
-
             if (amount > 0) {
-                result += amount;
+                balance += amount;
             } else {
-                result -= Math.abs(amount);
+                balance -= Math.abs(amount);
             }
         }
-
-        System.out.println("Итоговая сумма на счету составляет " + result + ".");
+        return balance;
     }
 }

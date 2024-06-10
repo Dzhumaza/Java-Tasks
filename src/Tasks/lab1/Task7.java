@@ -1,5 +1,4 @@
 package Tasks.lab1;
-
 import java.util.Scanner;
 
 public class Task7 {
@@ -9,16 +8,17 @@ public class Task7 {
         System.out.print("Введите возраст пользователя: ");
         int age = scanner.nextInt();
 
+        System.out.print("Вывод: ");
         if (age % 2 == 0) {
-            System.out.print("Нечетные числа до " + age + ": ");
-            for (int i = 1; i <= age; i += 2) {
+            for (int i = 2; i <= age; i += 2) {
                 System.out.print(i + " ");
             }
         } else {
-            System.out.print("Четные числа до " + age + ": ");
-            for (int i = 2; i <= age; i += 2) {
+            for (int i = 1; i <= age; i += 2) {
                 System.out.print(i + " ");
-                }
+            }
         }
+
+        scanner.close();
     }
 }

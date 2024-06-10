@@ -30,10 +30,6 @@ public class Student {
         this.grade = grade;
     }
 
-    public List<String> getCourses() {
-        return courses;
-    }
-
     public void addCourse(String course) {
         courses.add(course);
     }
@@ -42,19 +38,26 @@ public class Student {
         courses.remove(course);
     }
 
+    public void displayCourses() {
+        System.out.println("Курсы студента " + name + ":");
+        for (String course : courses) {
+            System.out.println("- " + course);
+        }
+    }
+
     public static void main(String[] args) {
-        Student student = new Student("Максим", 5);
-        System.out.println("Имя студента: " + student.getName());
-        System.out.println("Оценка: " + student.getGrade());
+        Student student = new Student("Арафат", 5);
 
         student.addCourse("Математика");
         student.addCourse("Физика");
         student.addCourse("Информатика");
 
-        System.out.println("Курсы студента: " + student.getCourses());
+        System.out.println("Студент: " + student.getName());
+        System.out.println("Оценка: " + student.getGrade());
+        student.displayCourses();
 
         student.removeCourse("Физика");
 
-        System.out.println("Курсы студента после удаления: " + student.getCourses());
+        student.displayCourses();
     }
 }

@@ -9,43 +9,35 @@ public class Dog {
         this.breed = breed;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setBreed(String breed) {
-        this.breed = breed;
-    }
-
     public String getName() {
         return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getBreed() {
         return breed;
     }
 
+    public void setBreed(String breed) {
+        this.breed = breed;
+    }
+
     public static void main(String[] args) {
-        Dog dog1 = new Dog("Сабак", "Бультерьер");
-        Dog dog2 = new Dog("Собок", "Питбуль");
+        Dog dog1 = new Dog("Шарик", "Дворняга");
+        Dog dog2 = new Dog("Бобик", "Овчарка");
 
-        System.out.println("Начальные значения:");
-        System.out.println("Собака 1:");
-        System.out.println("Имя: " + dog1.getName());
-        System.out.println("Порода: " + dog1.getBreed());
-        System.out.println("Собака 2:");
-        System.out.println("Имя: " + dog2.getName());
-        System.out.println("Порода: " + dog2.getBreed());
+        System.out.println("Собака 1: Имя: " + dog1.getName() + ", Порода: " + dog1.getBreed());
+        System.out.println("Собака 2: Имя: " + dog2.getName() + ", Порода: " + dog2.getBreed());
 
-        dog1.setName("Сабок");
-        dog2.setBreed("Чихуахуа");
+        dog1.setName("Джек");
+        dog1.setBreed("Лабрадор");
+        dog2.setName("Мухтар");
+        dog2.setBreed("Доберман");
 
-        System.out.println("\nОбновленные значения:");
-        System.out.println("Собака 1:");
-        System.out.println("Имя: " + dog1.getName());
-        System.out.println("Порода: " + dog1.getBreed());
-        System.out.println("Собака 2:");
-        System.out.println("Имя: " + dog2.getName());
-        System.out.println("Порода: " + dog2.getBreed());
+        System.out.println("Обновленная Собака 1: Имя: " + dog1.getName() + ", Порода: " + dog1.getBreed());
+        System.out.println("Обновленная Собака 2: Имя: " + dog2.getName() + ", Порода: " + dog2.getBreed());
     }
 }

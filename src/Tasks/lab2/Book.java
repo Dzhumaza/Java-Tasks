@@ -26,42 +26,59 @@ public class Book {
         return isbn;
     }
 
-    public static class Library {
-        private List<Book> books;
+    @Override
+    public String toString() {
+        return "Название: " + title + ", Автор: " + author + ", ISBN: " + isbn;
+    }
+}
 
-        public Library() {
-            this.books = new ArrayList<>();
+class Library {
+    private List<Book> books;
+
+    public Library() {
+        books = new ArrayList<>();
+    }
+
+    public void addBook(Book book) {
+        books.add(book);
+        System.out.println("Книга добавлена: " + book);
+    }
+
+    public void removeBook(String isbn) {
+        for (Book book : books) {
+            if (book.getIsbn().equals(isbn)) {
+                books.remove(book);
+                System.out.println("Книга удалена: " + book);
+                return;
+            }
         }
+        System.out.println("Книга с ISBN " + isbn + " не найдена.");
+    }
 
-        public void addBook(Book book) {
-            books.add(book);
-        }
-
-        public void removeBook(Book book) {
-            books.remove(book);
-        }
-
-        public void displayBooks() {
+    public void displayBooks() {
+        if (books.isEmpty()) {
+            System.out.println("Библиотека пуста.");
+        } else {
             System.out.println("Книги в библиотеке:");
             for (Book book : books) {
-                System.out.println("Название: " + book.getTitle() + ", Автор: " + book.getAuthor() + ", ISBN: " + book.getIsbn());
+                System.out.println(book);
             }
         }
     }
 
     public static void main(String[] args) {
-        Book book1 = new Book("Книга 1", "Автор 1", "12345");
-        Book book2 = new Book("Книга 2", "Автор 2", "54321");
-
         Library library = new Library();
+
+        Book book1 = new Book("Война и мир", "Лев Толстой", "12345");
+        Book book2 = new Book("Преступление и наказание", "Федор Достоевский", "54321");
+
         library.addBook(book1);
         library.addBook(book2);
-
-        System.out.println("Книги добавлены в библиотеку:");
+        System.out.println("");
         library.displayBooks();
 
-        library.removeBook(book1);
-        System.out.println("\nПосле удаления книги:");
+        library.removeBook("12345");
+        System.out.println("");
         library.displayBooks();
     }
 }
